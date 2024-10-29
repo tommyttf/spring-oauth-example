@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AuthServerApplication<AuthServer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.tommyttf.authserver.AuthServerApplication",
+            "projectName": "AuthServer",
+            "args": "",
+            "envFile": "${workspaceFolder}/AuthServer/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ResourceServerApplication<ResourceServer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.tommyttf.resourceserver.ResourceServerApplication",
+            "projectName": "ResourceServer",
+            "args": "",
+            "envFile": "${workspaceFolder}/ResourceServer/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiClientApplication<ApiClient>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.tommyttf.apiclient.ApiClientApplication",
+            "projectName": "ApiClient",
+            "args": "",
+            "envFile": "${workspaceFolder}/ApiClient/.env"
+        }
+    ]
+}

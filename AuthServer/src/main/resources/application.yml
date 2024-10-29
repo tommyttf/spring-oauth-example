@@ -4,63 +4,24 @@ server:
 spring:
   application:
     name: oauth
-  user:
-    name: user
-    password: password
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: mysql
+    show-sql: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: ${MYSQL_URL}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 28000000
+      max-lifetime: 28000000
+      maximum-pool-size: 30
   security:
     oauth2:
       authorizationserver:
         issuer: http://auth-server:9000
-
-        client:
-          articles-client:
-            registration:
-              client-id: articles-client
-              client-secret: "{noop}secret"
-              client-name: Articles Client
-              client-authentication-methods:
-                - client_secret_basic
-              authorization-grant-types:
-                - authorization_code
-                - refresh_token
-              redirect-uris:
-                - http://127.0.0.1:8080/login/oauth2/code/articles-client-oidc
-                - http://127.0.0.1:8080/authorized
-              scopes:
-                - openid
-                - articles.read
-
-
-#        client:
-#          my-client-1:
-#            registration:
-#              client-id: "abcd"
-#              client-secret: "{noop}secret1"
-#              client-authentication-methods:
-#                - "client_secret_basic"
-#              authorization-grant-types:
-#                - "authorization_code"
-#                - "refresh_token"
-#              redirect-uris:
-#                - "https://my-client-1.com/login/oauth2/code/abcd"
-#                - "https://my-client-1.com/authorized"
-#              scopes:
-#                - "openid"
-#                - "profile"
-#                - "email"
-#                - "phone"
-#                - "address"
-#            require-authorization-consent: true
-#          my-client-2:
-#            registration:
-#              client-id: "efgh"
-#              client-secret: "{noop}secret2"
-#              client-authentication-methods:
-#                - "client_secret_jwt"
-#              authorization-grant-types:
-#                - "client_credentials"
-#              scopes:
-#                - "user.read"
-#                - "user.write"
-#            jwk-set-uri: "https://my-client-2.com/jwks"
-#            token-endpoint-authentication-signing-algorithm: "RS256"
